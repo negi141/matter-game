@@ -1,0 +1,14 @@
+{
+  "name": "hoge",
+  "version": "1.1.1",
+  "description": "hoge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "matter-js": "^0.14.2"
+  }
+}
