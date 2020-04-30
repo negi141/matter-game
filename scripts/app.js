@@ -1,6 +1,7 @@
 
-canvasWidth = 640;
-canvasHeight = 480;
+canvasWidth = window.innerWidth-50;
+canvasHeight = window.innerHeight-100;
+var scale = 2;
 
 // Matter.jsのAPIの読み込み
 var Engine = Matter.Engine,
@@ -42,8 +43,8 @@ for(var i = 1; i <= numOfObject; i++) {
   var obj = Bodies.rectangle(
     Math.random() * (canvasWidth) + 0, // x位置
     Math.random() * (canvasHeight/2) + canvasHeight/2, // y位置
-    64,
-    64,
+    64*scale,
+    64*scale,
     { 
       label: 'box' + i,
       chamfer: 5,
@@ -51,7 +52,9 @@ for(var i = 1; i <= numOfObject; i++) {
       frictionAir: 0.15, // 空気抵抗
       render: { //ボールのレンダリングの設定
 				sprite: { //スプライトの設定
-					texture: './images/' + i + '.png' //スプライトに使うテクスチャ画像を指定
+          texture: './images/' + i + '.png', //スプライトに使うテクスチャ画像を指定
+          xScale: 2,
+          yScale: 2
 				}
       },
     }
