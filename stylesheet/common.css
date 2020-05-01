@@ -7,6 +7,7 @@ body{
     color: #323232;
 
   }
+  canvas{    border: solid 2px #aaa;}
 footer {
   color: #aaa;
   text-align: center;
