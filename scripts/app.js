@@ -45,7 +45,7 @@ World.add(engine.world, mousedrag);
 
 // 四角の要素
 var boxes = [];
-for(var i = 1; i <= numOfBox; i++) {
+for (var i = 1; i <= numOfBox; i++) {
   var obj = Bodies.rectangle(
     Math.random() * canvasWidth, // x位置
     Math.random() * (canvasHeight/3) + canvasHeight/3*2, // y位置
@@ -92,7 +92,6 @@ Events.on(mousedrag, "enddrag", function(e) {
   console.log("enddrag");
 });
 
-
 Engine.run(engine);
  
 Render.run(render);
@@ -102,7 +101,6 @@ var btnCheck = document.getElementById("btnCheck");
 btnCheck.addEventListener('click', function() {
   var isClear = true;
   for (var i = 0 ;  i < boxes.length-1 ; i++) {
-    console.log(boxes[i].label, boxes[i].position.y, boxes[i+1].position.y)
     // NGなケース：次のboxの位置関係で判定
     if (boxes[i].position.y < boxes[i+1].position.y + boxRealSize*0.9) {
       toast.warn(boxes[i].label + 'のうえに' + boxes[i+1].label + 'をのせよう');
@@ -124,7 +122,6 @@ btnReload.addEventListener('click', function() {
   window.location.reload();
 }, false);
 
-
 function completeAnim(fx, tx, fy, ty) {
   
   for (var i = 0 ;  i < boxes.length ; i++) {
@@ -134,31 +131,26 @@ function completeAnim(fx, tx, fy, ty) {
   var getCubePos = function() {
     var p = {x: Math.random() * canvasWidth,
              y: Math.random() * canvasHeight - 50};
-    if (fx < p.x && tx > p.x && fy < p.y && ty > p.y){
+    if (fx < p.x && tx > p.x && fy < p.y && ty > p.y) {
       p = getCubePos(fx, tx, fy, ty);
     }
     return p;
   }
-  var objs = [];
-  var fx = boxes[0].position.x-boxRealSize*0.5 - 5,
+  var objs = [],
+      fx = boxes[0].position.x-boxRealSize*0.5 - 5,
       tx = boxes[0].position.x+boxRealSize*0.5 + 5,
       fy = canvasHeight - boxRealSize*numOfBox - 5,
       ty = canvasHeight;
-  for(var i = 1; i <= 200; i++) {
+  for (var i = 1; i <= 200; i++) {
     var p = getCubePos(fx, tx, fy, ty);
     var obj = Bodies.rectangle(
-      p.x, // x位置
-      p.y, // y位置
-      15,
-      15,
+      p.x, p.y, 15, 15,
       { 
         chamfer: 0, //角丸
         density: 3, // 密度
         restitution: 0.5, //反発
         frictionAir: 0.1, // 空気抵抗
         friction: 1, // 摩擦
-        render: { //ボールのレンダリングの設定
-        },
       }
     );
     objs.push(obj);
