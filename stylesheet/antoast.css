@@ -1,0 +1,19 @@
+.an-toast{
+  position: fixed;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border-radius: 20px;
+  padding: 11px 18px;
+  border: none;
+  z-index: 1000;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  font-size: 23px;
+}
+
+.an-toast-pos-top{top: 50px;}
+.an-toast-pos-bottom{bottom: 50px;}
+
+.an-toast-success{background: rgba(0, 155, 202, 0.85);}
+.an-toast-warn{background: rgba(214, 146, 0, 0.85);}
+.an-toast-danger {background: rgba(204, 42, 2, 0.85);}

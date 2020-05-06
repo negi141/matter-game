@@ -8,18 +8,26 @@
   <title>すうじブロック</title>
   
   <link rel="stylesheet" href="stylesheet/common.css">
+  <link rel="stylesheet" media="all" href="stylesheet/antoast.css" />
   
 </head>
 <body>
 <div>
   <div id="canvas"></div>
-  <div id="btnReload">
-    <img src="images/icon/reload.png">
+  <div>
+    <img src="images/icon/check.png" id="btnCheck">
+
+    <img src="images/icon/reload.png" id="btnReload">
   </div>
 </div>
 
 
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
   <script src="scripts/matter.min.js"></script>
+  <script src="scripts/antoast.js"></script>
   <script src="scripts/app.js"></script>
 </body>
 </html>

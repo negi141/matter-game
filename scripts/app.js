@@ -42,7 +42,7 @@ var mousedrag = MouseConstraint.create(engine, {
 World.add(engine.world, mousedrag);
 
 //四角の要素
-var bodies = [];
+var boxes = [];
 for(var i = 1; i <= numOfObject; i++) {
   var obj = Bodies.rectangle(
     Math.random() * (canvasWidth) + 0, // x位置
@@ -50,7 +50,9 @@ for(var i = 1; i <= numOfObject; i++) {
     64*scale,
     64*scale,
     { 
-      label: 'box' + i,
+      label: (i+'').replace(/[A-Za-z0-9]/g, function(s) {
+          return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);
+      }),
       chamfer: 0, //角丸
       density: 1, // 密度
       restitution: 0, //反発
@@ -65,18 +67,21 @@ for(var i = 1; i <= numOfObject; i++) {
       },
     }
   );
-  bodies.push(obj);
+  boxes.push(obj);
 }
 engine.world.gravity.y = 0.5;
 
+World.add(engine.world, boxes);
+
+var borders = [];
 //外枠
-bodies.push(Bodies.rectangle(0, 0, canvasWidth*2, 1, { isStatic: true }));
-bodies.push(Bodies.rectangle(0, canvasHeight, canvasWidth*2, 1, { isStatic: true }));
-bodies.push(Bodies.rectangle(0, 0, 1, canvasHeight*2, { isStatic: true }));
-bodies.push(Bodies.rectangle(canvasWidth, 0, 1, canvasHeight*2, { isStatic: true }));
+borders.push(Bodies.rectangle(0, 0, canvasWidth*2, 1, { isStatic: true }));
+borders.push(Bodies.rectangle(0, canvasHeight, canvasWidth*2, 1, { isStatic: true }));
+borders.push(Bodies.rectangle(0, 0, 1, canvasHeight*2, { isStatic: true }));
+borders.push(Bodies.rectangle(canvasWidth, 0, 1, canvasHeight*2, { isStatic: true }));
  
 // add all of the bodies to the world
-World.add(engine.world, bodies);
+World.add(engine.world, borders);
 
 Events.on(mousedrag, "startdrag", function(e) {
   //console.log("startdrag", mousedrag.body);
@@ -97,7 +102,28 @@ Engine.run(engine);
 Render.run(render);
 
 
+var btnReload = document.getElementById("btnCheck");
+btnReload.addEventListener('click', function() {
+  var isClear = true;
+  for (var i = 0 ;  i < boxes.length-1 ; i++) {
+    console.log(boxes[i].label, boxes[i].position.y, boxes[i+1].position.y)
+    // NGなケース：次のboxの位置関係で判定
+    if (boxes[i].position.y < boxes[i+1].position.y + boxHeight*scale*0.9) {
+      isClear = false;
+      break;
+    }
+  }
+  if (isClear) {
+    antoast.success('すごーい！　やったね！');
+  }
+}, false);
+
 var btnReload = document.getElementById("btnReload");
 btnReload.addEventListener('click', function() {
   window.location.reload();
 }, false);
+
+
+var antoast = new anToast();
+antoast.setOption(5000, 'top');
+antoast.success('したから　ちいさいじゅんにつんでいこう');
