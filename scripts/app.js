@@ -112,6 +112,7 @@ btnCheck.addEventListener('click', function() {
   }
   if (isClear) {
     btnCheck.style.display = 'none';
+    antoast.setOption(15000, 'top');
     antoast.success('すごーい！ やったね！');
 
     completeAnim();
