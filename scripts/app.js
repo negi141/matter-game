@@ -19,6 +19,8 @@ var Engine = Matter.Engine,
 
 var engine = Engine.create();
 
+engine.world.gravity.y = 0.5;
+
 var render = Render.create({
       element: document.getElementById("canvas"), //Canvasを設置する要素を指定
       engine: engine, //生成したEngineを指定
@@ -69,17 +71,15 @@ for(var i = 1; i <= numOfBox; i++) {
   );
   boxes.push(obj);
 }
-engine.world.gravity.y = 0.5;
 
 World.add(engine.world, boxes);
 
+// 外枠
 var borders = [];
-//外枠
 borders.push(Bodies.rectangle(0, 0, canvasWidth*2, 1, { isStatic: true }));
 borders.push(Bodies.rectangle(0, canvasHeight, canvasWidth*2, 1, { isStatic: true }));
 borders.push(Bodies.rectangle(0, 0, 1, canvasHeight*2, { isStatic: true }));
 borders.push(Bodies.rectangle(canvasWidth, 0, 1, canvasHeight*2, { isStatic: true }));
- 
 World.add(engine.world, borders);
 
 Events.on(mousedrag, "startdrag", function(e) {
@@ -105,15 +105,15 @@ btnCheck.addEventListener('click', function() {
     console.log(boxes[i].label, boxes[i].position.y, boxes[i+1].position.y)
     // NGなケース：次のboxの位置関係で判定
     if (boxes[i].position.y < boxes[i+1].position.y + boxRealSize*0.9) {
-      antoast.warn(boxes[i].label + 'のうえに' + boxes[i+1].label + 'をのせよう');
+      toast.warn(boxes[i].label + 'のうえに' + boxes[i+1].label + 'をのせよう');
       isClear = false;
       break;
     }
   }
   if (isClear) {
     btnCheck.style.display = 'none';
-    antoast.setOption(15000, 'top');
-    antoast.success('すごーい！ やったね！');
+    toast.setOption(15000, 'top');
+    toast.success('すごーい！ やったね！');
 
     completeAnim();
   }
@@ -163,10 +163,9 @@ function completeAnim(fx, tx, fy, ty) {
     );
     objs.push(obj);
   }
-
   World.add(engine.world, objs);
 }
 
-var antoast = new anToast();
-antoast.setOption(5000, 'top');
-antoast.success('したから ちいさいじゅんに つんでみよう');
+var toast = new anToast();
+toast.setOption(5000, 'top');
+toast.success('したから ちいさいじゅんに つんでみよう');
