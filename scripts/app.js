@@ -12,6 +12,7 @@ var Engine = Matter.Engine,
     Render = Matter.Render,
     World = Matter.World,
     Bodies = Matter.Bodies,
+    Body = Matter.Body,
     Events = Matter.Events,
     MouseConstraint = Matter.MouseConstraint;
 
@@ -78,20 +79,15 @@ bodies.push(Bodies.rectangle(canvasWidth, 0, 1, canvasHeight*2, { isStatic: true
 World.add(engine.world, bodies);
 
 Events.on(mousedrag, "startdrag", function(e) {
-  console.log("startdrag", mousedrag.body);
-  mousedrag.body.angle = 0;
-  mousedrag.body.anglePrev = 0;
-  mousedrag.body.angularSpeed = 0;
-  mousedrag.body.angularVelocity = 0;
+  //console.log("startdrag", mousedrag.body);
+  console.log("startdrag", mousedrag.body.angle);
+  Body.rotate( mousedrag.body, Math.PI*2 - mousedrag.body.angle);
   //if(e.body.label == "ne") {
   //  console.log(e);
   //}
 });
 Events.on(mousedrag, "enddrag", function(e) {
-  console.log("enddrag", mousedrag.body);
-  //if(e.body.label == "ne") {
-  //  console.log(e);
-  //}
+  console.log("enddrag");
 });
 
 
