@@ -4,11 +4,11 @@
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
   border-radius: 20px;
-  padding: 11px 18px;
+  padding: 10px 16px;
   border: none;
   z-index: 1000;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-  font-size: 23px;
+  font-size: 22px;
 }
 
 .an-toast-pos-top{top: 50px;}
