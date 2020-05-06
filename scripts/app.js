@@ -1,6 +1,6 @@
 
-var canvasWidth = window.innerWidth - 20,
-    canvasHeight = window.innerHeight - 120, // キャンバス高さ
+var canvasWidth = window.innerWidth/2 - 20,
+    canvasHeight = window.innerHeight/2 - 120, // キャンバス高さ
     numOfObject = Math.round(Math.random() * 7) + 3, // boxの数。3～10でランダム
     boxHeight = 64; // boxデフォルトサイズ(scale = 1)
 console.log(canvasHeight, numOfObject)
