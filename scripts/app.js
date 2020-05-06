@@ -1,6 +1,6 @@
 
-var canvasWidth = window.innerWidth*0.9 - 20,
-    canvasHeight = window.innerHeight*0.9 - 120, // キャンバス高さ
+var canvasWidth = window.innerWidth * 0.95 - 20,
+    canvasHeight = window.innerHeight * 0.95 - 120, // キャンバス高さ
     numOfBox = Math.round(Math.random() * 7) + 3, // boxの数。3～10でランダム
     boxHeight = 64; // boxデフォルトサイズ(scale = 1)
 
@@ -133,7 +133,7 @@ function completeAnim(fx, tx, fy, ty) {
 
   var getCubePos = function() {
     var p = {x: Math.random() * canvasWidth,
-             y: Math.random() * canvasHeight};
+             y: Math.random() * canvasHeight - 50};
     if (fx < p.x && tx > p.x && fy < p.y && ty > p.y){
       p = getCubePos(fx, tx, fy, ty);
     }
