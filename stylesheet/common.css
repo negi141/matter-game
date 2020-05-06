@@ -8,9 +8,11 @@ body{
 }
 canvas {
   border: solid 2px #aaa;
-  text-align: center;
 }
 .btn {
   padding-left: 40px;
   padding-right: 40px;
+}
+.ta-c {
+  text-align: center;
 }
