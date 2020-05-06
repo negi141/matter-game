@@ -283,10 +283,9 @@ h1#header_tag{
   text-decoration: underline;
   color: #00aeca !important;
 }
-.btn-small {
-  height: 23px;
-  font-size: 14px;
-  line-height: 23px;
+.btn {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .field-label{
   color:#44b;
