@@ -1,6 +1,11 @@
 
-canvasWidth = window.innerWidth - 20;
-canvasHeight = window.innerHeight - 150;
+var canvasWidth = window.innerWidth - 20,
+    canvasHeight = window.innerHeight - 120, // キャンバス高さ
+    numOfObject = Math.round(Math.random() * 7) + 3, // boxの数。3～10でランダム
+    boxHeight = 64; // boxデフォルトサイズ(scale = 1)
+console.log(canvasHeight, numOfObject)
+// boxの数の+1個が収まるスケールにする
+var scale = canvasHeight / (boxHeight * (numOfObject + 1));
 
 // Matter.jsのAPIの読み込み
 var Engine = Matter.Engine,
@@ -36,8 +41,6 @@ var mousedrag = MouseConstraint.create(engine, {
 World.add(engine.world, mousedrag);
 
 //四角の要素
-var numOfObject = Math.random() * 8 + 3;
-var scale = 1.2 + (10-numOfObject)*0.2;
 var bodies = [];
 for(var i = 1; i <= numOfObject; i++) {
   var obj = Bodies.rectangle(
