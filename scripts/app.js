@@ -109,6 +109,7 @@ btnReload.addEventListener('click', function() {
     console.log(boxes[i].label, boxes[i].position.y, boxes[i+1].position.y)
     // NGなケース：次のboxの位置関係で判定
     if (boxes[i].position.y < boxes[i+1].position.y + boxHeight*scale*0.9) {
+      antoast.warn(boxes[i+1].label + 'を、' + boxes[i].label + 'の　うえにのせよう');
       isClear = false;
       break;
     }
