@@ -1,4 +1,4 @@
-.an-toast{
+.a-toast{
   position: fixed;
   display: inline-block;
   background: rgba(0, 0, 0, 0.6);
@@ -12,9 +12,9 @@
   font-size: 22px;
 }
 
-.an-toast-pos-top{top: 50px;}
-.an-toast-pos-bottom{bottom: 50px;}
+.a-toast-pos-top{top: 50px;}
+.a-toast-pos-bottom{bottom: 50px;}
 
-.an-toast-success{background: rgba(0, 155, 202, 0.85);}
-.an-toast-warn{background: rgba(214, 146, 0, 0.85);}
-.an-toast-danger {background: rgba(204, 42, 2, 0.85);}
+.a-toast-success{background: rgba(0, 155, 202, 0.85);}
+.a-toast-warn{background: rgba(214, 146, 0, 0.85);}
+.a-toast-danger {background: rgba(204, 42, 2, 0.85);}

@@ -160,7 +160,7 @@
     World.add(engine.world, objs);
   }
 
-  const toast = new anToast();
+  const toast = new aToast();
   toast.setOption(5000, 'top');
   toast.success('したから ちいさいじゅんに つんでみよう');
 
